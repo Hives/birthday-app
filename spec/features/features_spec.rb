@@ -15,6 +15,11 @@ feature 'The form page' do
     expect(page.find('select[name="month"]'))
   end
 
+  scenario "It should ask for the day of my birthday" do
+    visit "/"
+    expect(page.find('input[name="day"]'))
+  end
+
 end
 
 feature 'The response page' do
