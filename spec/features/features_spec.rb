@@ -1,3 +1,5 @@
+require 'date'
+
 feature 'The form page' do
   # As a user
   # So that I can feel warm and fuzzy
@@ -34,21 +36,30 @@ feature 'The response page' do
   end
 
   # As a user
-  # So that I can get in the festive spirit
+  # So that I can feel the vibes
   # It should wish me happy birthday if it's my birthday
   context "If today is my birthday" do
     before do
-      @t = Time.now
+      today = Date.today
+      @day = today.day
+      @month = today.strftime('%B')
     end
     scenario "It should wish me happy birthday" do
-      visit "/"
-      day = @t.strftime('%d')
-      month = @t.strftime('%B')
-      fill_in('name', with: "Paul")
-      fill_in('day', with: day)
-      page.find('select[name=month]').select(month)
-      click_button('Go!')
+      complete_form("Paul", @day, @month)
       expect(page).to have_content("Happy birthday Paul!")
+    end
+  end
+
+  # As a user
+  # So that I can feel the an-tici--------pation
+  # It should tell me how many days it is to my birthday
+  context "If today is not my birthday" do
+    before do
+      tomorrow = Date.today + 1
+      @day = @t.strftime('%d')
+      @month = @t.strftime('%B')
+    end
+    xscenario "It should not wish me a happy birthday" do
     end
   end
 end
