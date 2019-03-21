@@ -26,26 +26,14 @@ end
 
 feature 'The response page' do
   # As a user
-  # So that I can appreciate the personal touch
-  # It should address me by name
-  scenario "It should address me by name" do
-    visit "/"
-    fill_in('name', with: "Paul")
-    click_button('Go!')
-    expect(page).to have_content("Paul")
-  end
-
-  # As a user
   # So that I can feel the vibes
   # It should wish me happy birthday if it's my birthday
   context "If today is my birthday" do
-    before do
-      today = Date.today
-      @day = today.day
-      @month = today.strftime('%B')
-    end
     scenario "It should wish me happy birthday" do
-      complete_form("Paul", @day, @month)
+      birthday = Date.today
+      day = birthday.day
+      month = birthday.strftime('%B')
+      complete_form("Paul", day, month)
       expect(page).to have_content("Happy birthday Paul!")
     end
   end
@@ -53,15 +41,36 @@ feature 'The response page' do
   # As a user
   # So that I can feel the an-tici--------pation
   # It should tell me how many days it is to my birthday
-  context "If tomorrow is my birthday" do
+  context "If my birthday is in five days" do
     before do
-      tomorrow = Date.today + 1
-      @day = tomorrow.day
-      @month = tomorrow.strftime('%B')
+      birthday = Date.today + 5
+      @day = birthday.day
+      @month = birthday.strftime('%B')
     end
-    xscenario "It should not wish me a happy birthday" do
+
+    scenario "It should not wish me a happy birthday" do
       complete_form("Matt", @day, @month)
       expect(page).not_to have_content("Happy birthday Matt!")
+    end
+
+    scenario "It should tell me how many days it is until my birthday" do
+      complete_form("Sandra", @day, @month)
+      expect(page).to have_content("Your birthday will be in 5 days, Sandra.")
+    end
+  end
+
+  # As a grammar pedant
+  # So I can avoid being offended
+  # I don't want to see an 's' on the end of 'days' unless necessary
+  context "If my birthday is tomorrow" do
+    before do
+      birthday = Date.today + 1
+      @day = birthday.day
+      @month = birthday.strftime('%B')
+    end
+    scenario "It should say '1 day' not '1 days'" do
+      complete_form("Sarah", @day, @month)
+      expect(page).to have_content("Your birthday will be in 1 day, Sarah.")
     end
   end
 end

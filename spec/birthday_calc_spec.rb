@@ -3,11 +3,27 @@ require 'date'
 
 describe BirthdayCalc do
   describe "#countdown" do
+    context 'input is in string format' do
+      it 'should handle it' do
+        day = "21"
+        month = "03"
+        expect { described_class.countdown(day, month) }.not_to raise_error
+      end
+    end
+
+    context 'input is in integer format' do
+      it 'should handle it' do
+        day = 21
+        month = 03
+        expect { described_class.countdown(day, month) }.not_to raise_error
+      end
+    end
+
     context 'my birthday is today' do
       it 'returns 0' do
         birthday = Date.today
-        day = birthday .day
-        month = birthday .month
+        day = birthday.day
+        month = birthday.month
         expect(described_class.countdown(day, month)).to eq 0
       end
     end
@@ -15,8 +31,8 @@ describe BirthdayCalc do
     context 'my birthday is tomorrow' do
       it 'returns 1' do
         birthday = Date.today + 1
-        day = birthday .day
-        month = birthday .month
+        day = birthday.day
+        month = birthday.month
         expect(described_class.countdown(day, month)).to eq 1
       end
     end
