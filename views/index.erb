@@ -1,6 +1,10 @@
+<%= erb :head %>
+
 <h1>Hello there!</h1>
 <form action='/is_it_your_birthday' method='post'>
-  <input type=text name='name'>
+  What's your name?<br>
+  <input type=text name='name'><br>
+  When's your birthday?<br>
   <input type=text name='day'>
   <select name='month'>
     <option value=01>January</option>
@@ -16,5 +20,8 @@
     <option value=11>November</option>
     <option value=12>December</option>
   </select>
+  <br>
   <input type=submit value='Go!'>
 </form>
+
+<%= erb :foot %>

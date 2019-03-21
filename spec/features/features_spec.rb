@@ -74,4 +74,3 @@ feature 'The response page' do
     end
   end
 end
-
