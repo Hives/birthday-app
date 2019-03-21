@@ -53,13 +53,15 @@ feature 'The response page' do
   # As a user
   # So that I can feel the an-tici--------pation
   # It should tell me how many days it is to my birthday
-  context "If today is not my birthday" do
+  context "If tomorrow is my birthday" do
     before do
       tomorrow = Date.today + 1
-      @day = @t.strftime('%d')
-      @month = @t.strftime('%B')
+      @day = tomorrow.day
+      @month = tomorrow.strftime('%B')
     end
     xscenario "It should not wish me a happy birthday" do
+      complete_form("Matt", @day, @month)
+      expect(page).not_to have_content("Happy birthday Matt!")
     end
   end
 end

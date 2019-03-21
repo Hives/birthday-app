@@ -1,4 +1,5 @@
 require 'sinatra/base'
+require 'date'
 
 class Birthday < Sinatra::Base
   enable :sessions
@@ -9,6 +10,8 @@ class Birthday < Sinatra::Base
 
   post '/birthday' do
     @name = params[:name]
+    @birthday_day = params[:day]
+    @birthday_month = params[:month]
     erb :birthday
   end
 end
