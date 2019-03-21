@@ -9,6 +9,6 @@
 
 ## Thoughts etc.
 
-My `BirthdayCalc.countdown` method requires a month and a day as an input, which is a bit weird and specific. Maybe a better approach would have been to make it a class, and do something like `Date.parse(input_string)` in the `initialize` method, that would make it more flexible.
+My `DateStuff.countdown` method requires a month and a day as an input, which is a bit weird and specific. Maybe a better approach would have been to make it a class, and do something like `Date.parse(input_string)` in the `initialize` method, that would make it more flexible.
 
-The CSS is pretty slapdash too lol
+The CSS is pretty slapdash lol
