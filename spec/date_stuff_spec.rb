@@ -1,7 +1,7 @@
-require 'birthday_calc'
+require 'date_stuff'
 require 'date'
 
-describe BirthdayCalc do
+describe DateStuff do
   describe "#countdown" do
     context 'input is in string format' do
       it 'should handle it' do

@@ -1,6 +1,6 @@
 require 'sinatra/base'
 require 'date'
-require './lib/birthday_calc.rb'
+require './lib/date_stuff.rb'
 
 class Birthday < Sinatra::Base
   enable :sessions
@@ -10,7 +10,7 @@ class Birthday < Sinatra::Base
   end
 
   post '/is_it_your_birthday' do
-    days_to_birthday = BirthdayCalc.countdown(params[:day],
+    days_to_birthday = DateStuff.countdown(params[:day],
                                                params[:month])
     session[:name] = params[:name]
     session[:days_to_birthday] = days_to_birthday
