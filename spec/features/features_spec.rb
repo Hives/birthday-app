@@ -32,5 +32,24 @@ feature 'The response page' do
     click_button('Go!')
     expect(page).to have_content("Paul")
   end
+
+  # As a user
+  # So that I can get in the festive spirit
+  # It should wish me happy birthday if it's my birthday
+  context "If today is my birthday" do
+    before do
+      @t = Time.now
+    end
+    scenario "It should wish me happy birthday" do
+      visit "/"
+      day = @t.strftime('%d')
+      month = @t.strftime('%B')
+      fill_in('name', with: "Paul")
+      fill_in('day', with: day)
+      page.find('select[name=month]').select(month)
+      click_button('Go!')
+      expect(page).to have_content("Happy birthday Paul!")
+    end
+  end
 end
 
