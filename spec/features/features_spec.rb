@@ -7,6 +7,14 @@ feature 'The form page' do
     expect(page).to have_content("Hello there!")
   end
 
+  # As a user
+  # So that I can find out how long it is till my birthday
+  # I want to give it my birthday
+  scenario "It should ask for the month of my birthday" do
+    visit "/"
+    expect(page.find('select[name="month"]'))
+  end
+
 end
 
 feature 'The response page' do
