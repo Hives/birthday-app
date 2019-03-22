@@ -1,6 +1,7 @@
 require 'sinatra/base'
 require 'date'
 require './lib/date_stuff.rb'
+require 'json'
 
 class Birthday < Sinatra::Base
   enable :sessions
@@ -16,8 +17,9 @@ class Birthday < Sinatra::Base
     rescue ArgumentError
       redirect '/whoops' 
     end
-
-    session[:name] = params[:name]
+    
+    user_agent = request.env["HTTP_USER_AGENT"]
+    session[:name] = params[:name] != "" ? params[:name] : user_agent
     session[:days_to_birthday] = days_to_birthday
     days_to_birthday.zero? ? (redirect '/birthday') : (redirect '/countdown')
   end
