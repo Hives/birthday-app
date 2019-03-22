@@ -10,8 +10,13 @@ class Birthday < Sinatra::Base
   end
 
   post '/is_it_your_birthday' do
-    days_to_birthday = DateStuff.countdown(params[:day],
-                                               params[:month])
+    begin
+      days_to_birthday = DateStuff.countdown(params[:day],
+                                            params[:month])
+    rescue ArgumentError
+      redirect '/whoops' 
+    end
+
     session[:name] = params[:name]
     session[:days_to_birthday] = days_to_birthday
     days_to_birthday.zero? ? (redirect '/birthday') : (redirect '/countdown')
@@ -27,4 +32,9 @@ class Birthday < Sinatra::Base
     @name = session[:name]
     erb :countdown
   end
+
+  get '/whoops' do
+    erb :whoops
+  end
+
 end
