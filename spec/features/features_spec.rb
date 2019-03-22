@@ -35,8 +35,10 @@ feature 'The response page' do
     end
   end
 
-  xcontext "If I enter a bad number in the 'day' field" do
+  context "If I enter a bad number in the 'day' field" do
     it "should show me a friendly error message" do
+      complete_form("Paul", 99, "March")
+      expect(page).to have_content("Whoops!")
     end
   end
 
