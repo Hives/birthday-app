@@ -26,23 +26,6 @@ end
 
 feature 'The response page' do
   # As a user
-  # So that I don't see a scary Sinatra error page
-  # I want to see a friendly error message if I enter an invalid date
-  context "If I enter some text in the 'day' field" do
-    it "should show me a friendly error message" do
-      complete_form("Paul", "some_text", "March")
-      expect(page).to have_content("Whoops!")
-    end
-  end
-
-  context "If I enter a bad number in the 'day' field" do
-    it "should show me a friendly error message" do
-      complete_form("Paul", 99, "March")
-      expect(page).to have_content("Whoops!")
-    end
-  end
-
-  # As a user
   # So that I can feel the vibes
   # I want to be wished happy birthday if it is my birthday
   context "If today is my birthday" do
@@ -94,6 +77,23 @@ feature 'The response page' do
 end
 
 feature 'The error page' do
+  # As a user
+  # So that I don't see a scary Sinatra error page
+  # I want to see a friendly error message if I enter an invalid date
+  context "If I enter some text in the 'day' field" do
+    it "should show me a friendly error message" do
+      complete_form("Paul", "some_text", "March")
+      expect(page).to have_content("Whoops!")
+    end
+  end
+
+  context "If I enter a bad number in the 'day' field" do
+    it "should show me a friendly error message" do
+      complete_form("Paul", 99, "March")
+      expect(page).to have_content("Whoops!")
+    end
+  end
+
   # As a user
   # So I don't end up lost without a clue
   # I want to be able to get back to the main page from the error page
