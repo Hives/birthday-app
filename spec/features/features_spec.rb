@@ -92,3 +92,13 @@ feature 'The response page' do
     end
   end
 end
+
+feature 'The error page' do
+  # As a user
+  # So I don't end up lost without a clue
+  # I want to be able to get back to the main page from the error page
+  it "Lets me return to the main page" do
+    complete_form("Sarah", 666, "January")
+    expect(page).to have_link(nil, href: '/')
+  end
+end
