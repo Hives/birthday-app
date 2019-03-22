@@ -21,7 +21,7 @@ All RSpec tests are passing, and test coverage is 100%.
 
 I tried to keep my model, view and controller layers separate. My controller (`app.rb`) handles requests/responses, the logic for calculating the number of days until the user's birthday is separated out into a module (`lib/date_stuff.rb`), and almost all logic is kept out of the views.
 
-The only bit of logic in the views is the part where the app decides whether the number of "days" until your birthday needs an "s" on the end ([see this commit](https://github.com/Hives/birthday-app/commit/0a7d20246eb765906cbefb32c0f499e05f39dda2)). Since that is light logic and presentational, I think it belongs more in the view than anywhere else.
+The only bit of logic in the views is the part where the app decides whether the number of "days" until your birthday needs an "s" on the end ([see this commit](https://github.com/Hives/birthday-app/commit/0a7d20246eb765906cbefb32c0f499e05f39dda2)). Since that is light logic and presentational, I think it belongs more in the view than anywhere else. The tests I'd written meant that it was very easy for me to move this behaviour between layers and be confident my app was still working as desired.
 
 ## Things I might have done differently
 
