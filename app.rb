@@ -1,7 +1,6 @@
 require 'sinatra/base'
 require 'date'
 require './lib/date_stuff.rb'
-require 'json'
 
 class Birthday < Sinatra::Base
   enable :sessions
