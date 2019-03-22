@@ -13,7 +13,7 @@
 
 I think I used a good TDD process on this project. I started by breaking the instructions down into user stories and writing feature tests for the user stories. Then when it became clear that some logic was going to be required in processing the birthday date I TDDed a module to do that processing, incrementing unit tests and the code to pass those test until the module was complete. At that point I returned to the higher level and carried on iterating my feature tests until all the functionality was implemented.
 
-I also included the edge cases I thought of in my TDD process - leap years, and not including an "s" on the end of "day" in "your birthday is in 1 day", so that these cases are included in the documentation.
+I also included the edge cases I thought of in my TDD process - leap years, and not including an "s" on the end of "day" in "your birthday is in 1 day", bad user input, so that these cases are included in the documentation.
 
 All RSpec tests are passing, and test coverage is 100%.
 
