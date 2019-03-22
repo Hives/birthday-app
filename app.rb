@@ -23,10 +23,8 @@ class Birthday < Sinatra::Base
   end
 
   get '/countdown' do
-    days_to_birthday = session[:days_to_birthday]
+    @days_to_birthday = session[:days_to_birthday]
     @name = session[:name]
-    @days_string = "#{days_to_birthday} day"
-    @days_string += "s" if days_to_birthday > 1
     erb :countdown
   end
 end
