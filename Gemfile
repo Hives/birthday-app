@@ -4,7 +4,6 @@ ruby '2.6.1'
 
 gem 'capybara'
 gem 'launchy'
-gem 'pry'
 gem 'rerun'
 gem 'rspec'
 gem 'rubocop'
