@@ -30,3 +30,7 @@ My `DateStuff.countdown` method requires a month and a day as an input, which is
 I think also that `DateStuff` is not a great name for my module...
 
 The CSS is pretty slapdash lol.
+
+## Coach feedback
+
+Katerina gave me some feedback. Check it out [here](coach-feedback.md).
